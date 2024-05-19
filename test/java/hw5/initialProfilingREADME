@@ -1,0 +1,74 @@
+I replaced the data[] array with one that has integers 1 through 900, in order (shuffling wouldn't
+matter for the purpose of this experiment) and then for the last 100 entries, added the value 1001.
+Then I called insert on the sets for every element of data[]. The unoptimized ones would insert
+1001 to the very end, and then every time for the last 99 requests would be going all the way
+over their length only to find that 1001 is already there. The optimized ones, however, upon
+adding 1001 only once, would move it to the front and quickly breeze through the last 99 requests,
+since they would stop at the front where 1001 is.
+
+So, I made this "data" array in setUp(), and then in my experiment, I ran the same operation
+provided in the starter code - simply inserting every number in the data[] array.
+
+I ran this experiment. The results were that the move to front linked set averaged 0.744 ms/op, the
+unoptimized linked set averaged 0.986 ms/op, the transpose array averaged 0.248 ms/op, and the
+unoptimized array set averaged 0.255 ms/op.
+
+The results are not very surprising. With the linked list we see a marked improvement, by about
+0.242 ms/op, making it almost 25% faster. This makes sense - once an element is queried, the list
+moves it right to the front. So, we would expect a noticeable difference from the last 100 queries
+which were all for 1001.
+
+The array, however, surprised me at first in that the optimized array was hardly faster than the
+unoptimized one. But upon reflection it makes sense. The array does not move a queried value
+to the front - it just swaps it with its neighbor, one place closer to the front. After 100
+queries for the integer '1001', it will only be 100 places ahead in the array, that is, at position
+899 instead of 999. In other words, each of the last 100 queries for '1001' is only marginally faster
+in the optimized array than the unoptimized one. The extent to which it's faster grows with each
+iteration, as 1001 is moved place by place closer to the front, but by the end of this experiment
+it's still far back in the array and we would not expect much of a difference.
+
+What's noteworthy is that the linked list tok so much longer than both the array implementations.
+This must be because of the extra relinking operations that come with the linked list, even though
+it is theoretically better in that it moves elements right to the very front immediately with the
+first query.
+
+Based on this, I infer that a linked list implementation is preferable for enormous data sets
+potentially orders of magnitude larger than the array of 1000 elements that I tested here. But,
+for smaller datasets, the array implementation is more time-efficient.
+
+SECOND EXPERIMENT - theoretical extreme. I put it in the file "second_experiment.txt". I'm
+concerned about losing points for writing too much which is why I'm not making it part of my
+official README response. You don't have to read it.
+
+SECOND EXPERIMENT - an extreme, perhaps contrived case
+
+
+Please don't dock points for an excessively long response, you don't have to read this.
+
+I used the same data array as before, and tried inserting every element in the data array to
+the respective sets as before. But now, in addition, I ran 10,000 operations of "insert(1001)"
+to give the array implementation enough repetitions to move this frequently-queried entry all
+the way to the front, to really show the benefits of its optimization versus the unoptimized
+array set. And, I wanted to see the differences in performance in general between all the
+implementations brought into greater detail by this larger and more taxing experiment.
+
+The results were:
+
+Benchmark                         Mode  Cnt   Score   Error  Units
+JmhRuntimeTest.arraySet           avgt    2   4.729          ms/op
+JmhRuntimeTest.linkedSet          avgt    2  17.543          ms/op
+JmhRuntimeTest.moveToFront        avgt    2   0.781          ms/op
+JmhRuntimeTest.transposeSequence  avgt    2   0.452          ms/op
+
+The difference in performance between the move to front linked set and unoptimized linked set,
+and between the transpose array and unoptimized array, were much more prominent. Most interestingly,
+and in line with my prediction, the moveToFront linked list was no longer inferior in performance
+to the unoptimized array, as it was before. Now, it was much, much better. As I predicted, as the
+computational load increases, the benefits of optimization cause the operationally bulkier linked
+list to pull far ahead of the unoptimized array.
+
+At this size, the transpose array remained better than the moveToFront linked list, but the transpose
+array increased by almost 0.2 ms/op from before, whereas the linked list increased by just about
+0.37 ms/op. I predict that, with large enough data sets, the linked list would be more efficient
+than even the optimized array - although maybe not with this particular experiment, since both
+end up being similar once the most queried item (1001) is at the very front.

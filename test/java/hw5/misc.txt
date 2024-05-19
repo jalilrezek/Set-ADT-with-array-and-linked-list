@@ -1,0 +1,75 @@
+    deque.insertBack("Back1");
+    deque.insertBack("Back2"); // fail - Back1
+    deque.insertBack("Back3");
+    deque.insertBack("Back4"); // fail - Back3
+    deque.insertBack("Back5");
+    deque.insertBack("Back6");
+    deque.insertBack("Back7"); // fail - Back6
+    deque.insertBack("Back8");
+    deque.insertBack("Back9");
+    deque.insertBack("Back10");
+    deque.insertBack("Back11");
+    deque.insertBack("Back12"); // fail - Back 11
+    deque.insertBack("Back13");
+    deque.insertBack("Back14");
+    deque.insertBack("Back15");
+    deque.insertBack("Back16");
+    deque.insertBack("Back17");
+    deque.insertBack("Back18");
+    deque.insertBack("Back19");
+    deque.insertBack("Back20");
+    deque.insertBack("Back21"); // fail - Back20
+    deque.insertBack("Back22");
+    deque.insertBack("Back23");
+    deque.insertBack("Back24");
+    deque.insertBack("Back25");
+    deque.insertBack("Back26");
+    deque.insertBack("Back27");
+    deque.insertBack("Back28");
+    deque.insertBack("Back29");
+    deque.insertBack("Back30");
+    deque.insertBack("Back31");
+    deque.insertBack("Back32");
+    deque.insertBack("Back33");
+    deque.insertBack("Back34");
+    deque.insertBack("Back35");
+    deque.insertBack("Back36");
+    deque.insertBack("Back37");
+    deque.insertBack("Back38"); // fail - Back37
+
+
+    Some stuff in LengthInsertFront()
+
+    //    deque.insertFront("Back1"); // if there are addFront, then one addBack, fails; 1 less length
+    //    deque.insertFront("Back2"); // if there are addFront, then one addBack, then more addFront, fails; 1 less length
+    //    deque.insertBack("Back3"); // causes off by 2 - length should be 6, is 4
+    //    deque.insertFront("Back4"); // should be 7, is 5
+    //    deque.insertFront("Front4"); // should be 8, is 6
+    //    deque.insertFront("Back5"); // should be 9, is 7
+    //    deque.insertFront("Back6"); // should be 10, is 8
+    //    deque.insertFront("Front5"); // should be 11, is 9
+    //    deque.insertFront("Front6"); // should be 12, is 10
+    //    deque.insertBack("Back7"); // should be 13, is 11
+    //    deque.insertFront("Front7");
+    //    deque.insertBack("Back8");
+    //    deque.insertFront("Front8");
+    //    deque.insertBack("Back9"); // should be 17, is 15
+    //    deque.insertBack("Back10"); // should be 18, is 16
+    //    deque.insertFront("Front1");
+    //    deque.insertFront("Front2");
+    //    deque.insertFront("Back1"); // first back insertion fails, length is still 2, not 3
+    //    deque.insertFront("Back1"); // if there are addFront, then one addBack, fails; 1 less length
+    //    deque.insertFront("Back2"); // if there are addFront, then one addBack, then more addFront, fails; 1 less length
+    //    deque.insertFront("Back3"); // causes off by 2 - length should be 6, is 4
+    //    deque.insertFront("Back4"); // should be 7, is 5
+    //    deque.insertFront("Front4"); // should be 8, is 6
+    //    deque.insertBack("Back5"); // should be 9, is 7
+    //    deque.insertFront("Back6"); // should be 10, is 8
+    //    deque.insertFront("Front5"); // should be 11, is 9
+    //    deque.insertFront("Front6"); // should be 12, is 10
+    //    deque.insertBack("Back7"); // should be 13, is 11
+    //    deque.insertFront("Front7");
+    //    deque.insertBack("Back8");
+    //    deque.insertFront("Front8");
+    //    deque.insertBack("Back9"); // should be 17, is 15
+    //    deque.insertBack("Back10"); // should be 18, is 16
